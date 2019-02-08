@@ -1,0 +1,21 @@
+version: "2"
+services:
+  backend:
+    restart: always
+    build: .
+    container_name: oauth2server_backend
+    volumes:
+      - .:/data/code
+
+    ports:
+      - "8000:8000"
+
+    environment:
+      RUN_TYPE: production
+
+    entrypoint: ["./docker-entry-point.sh"]
+
+networks:
+  default:
+    external:
+      name: allchaininfrastructure_default
